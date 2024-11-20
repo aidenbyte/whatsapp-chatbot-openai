@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     service_host: str = "0.0.0.0"
     service_port: int = 8000
+    OPENAI_API_KEY: str
+    OPENAI_MODEL: str = "gpt-3.5-turbo"
 
     class Config:
         env_file = ".env"

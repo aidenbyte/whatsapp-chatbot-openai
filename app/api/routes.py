@@ -12,11 +12,12 @@ async def wati_webhook(message: WatiMessage):
         logger.info(f"Received webhook: {message}")
         
         if message.eventType == "message":
-            # Process message and send response if needed
-            response = await wati_service.send_message(
+            logger.info(f"Processing message event from {message.waId}")
+            response = await wati_service.process_and_reply(
                 message.waId,
-                f"Received your message: {message.text}"
+                message.text
             )
+            logger.info(f"Successfully processed message: {response}")
             return {"status": "success", "response": response}
             
         return {"status": "success"}
